@@ -15,7 +15,7 @@ async function sprintChallenge5() {
     learnersData = await responseLearners.json();
     const mentorsData = await responseMentors.json();
 
-    // Set initial text for p.info
+    
     const infoText = document.querySelector('.info');
     if (infoText) {
       infoText.textContent = 'No learner is selected';
@@ -36,11 +36,11 @@ async function sprintChallenge5() {
       mentorsHeading.textContent = 'Mentors';
 
       const mentorsArrow = document.createElement('span');
-      mentorsArrow.classList.add('arrow'); // Add a class for styling
+      mentorsArrow.classList.add('arrow'); 
       mentorsHeading.appendChild(mentorsArrow);
 
       const mentorsList = document.createElement('ul');
-      mentorsList.classList.add('hidden'); // Initially hidden
+      mentorsList.classList.add('hidden'); 
 
       for (const mentorId of learner.mentors) {
         const mentor = mentorsData.find((m) => m.id === mentorId);
@@ -59,7 +59,7 @@ async function sprintChallenge5() {
       cardsContainer.appendChild(card);
     }
 
-    // Add event listeners only if elements are available
+    
     const cardElements = document.querySelectorAll('.card');
     if (cardElements) {
       cardElements.forEach((card) => {
@@ -72,17 +72,17 @@ async function sprintChallenge5() {
             const selectedLearnerId = learnersData.find(
               (learner) => learner.fullName === selectedLearnerName
             ).id;
-            card.querySelector('h3').textContent = `${selectedLearnerName}, ID ${selectedLearnerId}`; // Display both name and ID in the card
+            card.querySelector('h3').textContent = `${selectedLearnerName}, ID ${selectedLearnerId}`; 
             infoText.textContent = `The selected learner is ${selectedLearnerName}`;
           } else {
-            card.querySelector('h3').textContent = card.querySelector('h3').textContent.split(",")[0]; // Remove ID when not selected
+            card.querySelector('h3').textContent = card.querySelector('h3').textContent.split(",")[0]; 
             infoText.textContent = 'No learner is selected';
           }
 
           cardElements.forEach((otherCard) => {
             if (otherCard !== card && otherCard.classList.contains('selected')) {
               otherCard.classList.remove('selected');
-              otherCard.querySelector('h3').textContent = otherCard.querySelector('h3').textContent.split(",")[0]; // Remove ID from other selected cards
+              otherCard.querySelector('h3').textContent = otherCard.querySelector('h3').textContent.split(",")[0]; 
             }
           });
         });
